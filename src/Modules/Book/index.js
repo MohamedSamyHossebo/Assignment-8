@@ -1,1 +1,1 @@
-export { default as bookRouter } from './book.routes.js';
+export { default as bookRouter } from './book.service.js';

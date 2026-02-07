@@ -173,7 +173,7 @@ export const aggregateBooks3 = async (req, res) => {
     }
 };
 
-// 19. Aggregation: Join books with logs (lookup) - Note: Usually unlikely to have a relation, but demonstrating syntax
+// 19. Aggregation: Join books with logs
 export const aggregateBooks4 = async (req, res) => {
     try {
         const books = await Book.aggregate([
