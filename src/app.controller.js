@@ -1,23 +1,17 @@
+import { connectDB } from './DB/connection.js';
 import { bookRouter, authorRouter, logRouter } from './Modules/index.js';
-import { dbConnection } from './DB/connection.js';
 
-export const bootstrap = async (app, express) => {
-    // Connect to Database
-    await dbConnection();
-
-    // Global Middleware
+const bootstrap = async (app, express) => {
     app.use(express.json());
+    await connectDB();
 
-    // Routes
     app.use(bookRouter);
     app.use(authorRouter);
     app.use(logRouter);
 
-    // Root endpoint
-    app.get('/', (req, res) => res.send('Hello World!'));
-
-    // Global Error Handling (Optional but good practice)
-    app.use('*', (req, res) => {
-        return res.json({ message: 'Page Not Found' });
+    app.use('/*dummy', (req, res, next) => {
+        res.status(404).json({ message: 'Route not found' });
     });
 };
+
+export default bootstrap;

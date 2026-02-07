@@ -1,6 +1,9 @@
 import mongoose from 'mongoose';
+import dotenv from "dotenv";
 
-export const dbConnection = async () => {
+dotenv.config({ path: "./src/Config/.env.secrets" });
+
+export const connectDB = async () => {
     return await mongoose
         .connect(process.env.MONGO_URI)
         .then(() => {
