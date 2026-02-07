@@ -1,0 +1,446 @@
+{
+    "info": {
+        "_postman_id": "assignment-8-collection",
+        "name": "Assignment 8",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Books",
+            "item": [
+                {
+                    "name": "1. Create Book Collection",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "{{BaseURL}}/collection/books",
+                            "host": [
+                                "{{BaseURL}}"
+                            ],
+                            "path": [
+                                "collection",
+                                "books"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "4. Create Book Index",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "{{BaseURL}}/collection/books/index",
+                            "host": [
+                                "{{BaseURL}}"
+                            ],
+                            "path": [
+                                "collection",
+                                "books",
+                                "index"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "5. Insert One Book",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"title\": \"Brave New World\",\n    \"author\": \"Aldous Huxley\",\n    \"year\": 1932,\n    \"genres\": [\"Science Fiction\", \"Dystopian\"]\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{BaseURL}}/books",
+                            "host": [
+                                "{{BaseURL}}"
+                            ],
+                            "path": [
+                                "books"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "6. Insert Book Batch",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[\n    {\n        \"title\": \"1984\",\n        \"author\": \"George Orwell\",\n        \"year\": 1949,\n        \"genres\": [\"Dystopian\", \"Political Fiction\"]\n    },\n    {\n        \"title\": \"Future\",\n        \"author\": \"Unknown\",\n        \"year\": 2020,\n        \"genres\": [\"Drama\"]\n    },\n    {\n        \"title\": \"The Shining\",\n        \"author\": \"Stephen King\",\n        \"year\": 1977,\n        \"genres\": [\"Horror\"]\n    }\n]",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{BaseURL}}/books/batch",
+                            "host": [
+                                "{{BaseURL}}"
+                            ],
+                            "path": [
+                                "books",
+                                "batch"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "8. Update Book Year",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"year\": 2022\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{BaseURL}}/books/Future",
+                            "host": [
+                                "{{BaseURL}}"
+                            ],
+                            "path": [
+                                "books",
+                                "Future"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "9. Find Book By Title",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{BaseURL}}/books/title?title=Brave New World",
+                            "host": [
+                                "{{BaseURL}}"
+                            ],
+                            "path": [
+                                "books",
+                                "title"
+                            ],
+                            "query": [
+                                {
+                                    "key": "title",
+                                    "value": "Brave New World"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "10. Find Books By Year Range",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{BaseURL}}/books/year?from=1990&to=2010",
+                            "host": [
+                                "{{BaseURL}}"
+                            ],
+                            "path": [
+                                "books",
+                                "year"
+                            ],
+                            "query": [
+                                {
+                                    "key": "from",
+                                    "value": "1990"
+                                },
+                                {
+                                    "key": "to",
+                                    "value": "2010"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "11. Find Books By Genre",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{BaseURL}}/books/genre?genre=Science Fiction",
+                            "host": [
+                                "{{BaseURL}}"
+                            ],
+                            "path": [
+                                "books",
+                                "genre"
+                            ],
+                            "query": [
+                                {
+                                    "key": "genre",
+                                    "value": "Science Fiction"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "12. Find Books Skip Limit",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{BaseURL}}/books/skip-limit",
+                            "host": [
+                                "{{BaseURL}}"
+                            ],
+                            "path": [
+                                "books",
+                                "skip-limit"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "13. Find Books Year Integer",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{BaseURL}}/books/year-integer",
+                            "host": [
+                                "{{BaseURL}}"
+                            ],
+                            "path": [
+                                "books",
+                                "year-integer"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "14. Find Books Exclude Genres",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{BaseURL}}/books/exclude-genres",
+                            "host": [
+                                "{{BaseURL}}"
+                            ],
+                            "path": [
+                                "books",
+                                "exclude-genres"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "15. Delete Books Before Year",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{BaseURL}}/books/before-year?year=2000",
+                            "host": [
+                                "{{BaseURL}}"
+                            ],
+                            "path": [
+                                "books",
+                                "before-year"
+                            ],
+                            "query": [
+                                {
+                                    "key": "year",
+                                    "value": "2000"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "16. Aggregate 1 (Filter/Sort)",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{BaseURL}}/books/aggregate1",
+                            "host": [
+                                "{{BaseURL}}"
+                            ],
+                            "path": [
+                                "books",
+                                "aggregate1"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "17. Aggregate 2 (Project)",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{BaseURL}}/books/aggregate2",
+                            "host": [
+                                "{{BaseURL}}"
+                            ],
+                            "path": [
+                                "books",
+                                "aggregate2"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "18. Aggregate 3 (Unwind)",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{BaseURL}}/books/aggregate3",
+                            "host": [
+                                "{{BaseURL}}"
+                            ],
+                            "path": [
+                                "books",
+                                "aggregate3"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "19. Aggregate 4 (Lookup)",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{BaseURL}}/books/aggregate4",
+                            "host": [
+                                "{{BaseURL}}"
+                            ],
+                            "path": [
+                                "books",
+                                "aggregate4"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Authors",
+            "item": [
+                {
+                    "name": "2. Create Author",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Famous Author\",\n    \"bio\": \"A brief biography\",\n    \"birthDate\": \"1980-01-01\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{BaseURL}}/collection/authors",
+                            "host": [
+                                "{{BaseURL}}"
+                            ],
+                            "path": [
+                                "collection",
+                                "authors"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Logs",
+            "item": [
+                {
+                    "name": "3. Create Capped Collection",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "{{BaseURL}}/collection/logs/capped",
+                            "host": [
+                                "{{BaseURL}}"
+                            ],
+                            "path": [
+                                "collection",
+                                "logs",
+                                "capped"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "7. Insert Log",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"message\": \"System initialized\",\n    \"level\": \"info\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{BaseURL}}/logs",
+                            "host": [
+                                "{{BaseURL}}"
+                            ],
+                            "path": [
+                                "logs"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ],
+    "variable": [
+        {
+            "key": "BaseURL",
+            "value": "http://localhost:3000",
+            "type": "string"
+        }
+    ]
+}
