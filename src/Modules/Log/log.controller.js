@@ -3,7 +3,6 @@ import mongoose from 'mongoose';
 
 export const createCappedCollection = async (req, res) => {
     try {
-        // Check if collection exists
         const collections = await mongoose.connection.db
             .listCollections({ name: 'logs' })
             .toArray();
@@ -11,8 +10,6 @@ export const createCappedCollection = async (req, res) => {
             return res.status(200).json({ message: 'Collection already exists' });
         }
 
-        // Create capped collection explicitly if needed, but Mongoose model handles it on creation usually if autoCreate is true.
-        // However, to strictly follow the "Create a capped collection" instruction via endpoint:
         await mongoose.connection.db.createCollection('logs', {
             capped: true,
             size: 1048576,

@@ -4,7 +4,6 @@ import { Book } from '../../DB/models/book.model.js';
 export const createBookCollection = async (req, res) => {
     try {
         await Book.createCollection();
-        // Validation is already in the Schema, but to be explicit about collection creation:
         res.status(201).json({ message: 'Books collection created' });
     } catch (err) {
         res.status(500).json({ message: 'Error creating collection', error: err });
@@ -45,7 +44,7 @@ export const createBooksBatch = async (req, res) => {
 export const updateBookYear = async (req, res) => {
     try {
         const { title } = req.params;
-        const { year } = req.body; // or hardcode 2022 as per req, but body is flexible
+        const { year } = req.body;
         const updatedBook = await Book.findOneAndUpdate(
             { title },
             { year: 2022 },
@@ -108,12 +107,7 @@ export const findBooksSkipLimit = async (req, res) => {
 // 13. Find books where the year field stored as an integer
 export const findBooksYearInteger = async (req, res) => {
     try {
-        const books = await Book.find({ year: { $type: 'int' } }); // or 16 for 32-bit int, 'number' matches all numbers
-        // In Mongo $type: 'int' checks for BSON Integer type. Mongoose 'Number' is usually double.
-        // If exact Int32/Int64 check is needed, this relies on how data was inserted.
-        // Common assumption: just check it exists and is a number.
-        // But strict BSON type check:
-        // const books = await Book.find({ year: { $type: 16 } }); // 16 is 32-bit integer
+        const books = await Book.find({ year: { $type: 'int' } });
         res.status(200).json({ message: 'Books found', books });
     } catch (err) {
         res.status(500).json({ message: 'Error finding books', error: err });
@@ -182,16 +176,12 @@ export const aggregateBooks3 = async (req, res) => {
 // 19. Aggregation: Join books with logs (lookup) - Note: Usually unlikely to have a relation, but demonstrating syntax
 export const aggregateBooks4 = async (req, res) => {
     try {
-        // Assuming a dummy relationship for demonstration, e.g., matching a field or just generic lookup
-        // Since no foreign key was defined, we'll just show the syntax or match on something generic if it existed.
-        // Requirement says "Join books with logs".
-        // We'll assume a loose join or just the structure.
         const books = await Book.aggregate([
             {
                 $lookup: {
                     from: 'logs',
-                    localField: 'title', // Dummy field match
-                    foreignField: 'message', // Dummy field match
+                    localField: 'title',
+                    foreignField: 'message',
                     as: 'related_logs',
                 },
             },
